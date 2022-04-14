@@ -1,0 +1,52 @@
+:root{
+    --darkblue: #193153;
+    --purple: #9D6381;
+    --grey: #CECCCC;
+}
+
+body{
+    background-color: var(--grey);
+    margin: 10px;
+    height: calc(100vh - 20px);
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Logo{
+    height: 100px;
+    aspect-ratio: 1;
+    background-color: var(--purple);
+    border-radius: 25%;
+}
+
+header h1{
+    color: var(--darkblue);
+}
+
+.bouton-resoudre{
+    padding: 10px;
+    background-color: var(--purple);
+    border-radius: 25%;
+}
+
+.bouton-resoudre h3{
+    margin: 0px;
+    color: white;
+}
+
+.grille{
+    height: 80%;
+    aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: 100px repeat(5,minmax(30px,1fr));
+    grid-template-rows: 100px repeat(5,minmax(30px,1fr));
+}
+
+.grille div{
+    border: 1px solid var(--darkblue);
+}

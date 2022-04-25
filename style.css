@@ -2,10 +2,38 @@
     --darkblue: #193153;
     --purple: #9D6381;
     --grey: #CECCCC;
+
+    --green1: #136F63;
+    --green2: #109065;
+    --green3: #0CB067;
+    --green4: #04F06A;
+
+    --light-blue: rgb(130, 178, 227);
+    --true-blue: #0466c8ff;
+    --usafa-blue: #0353a4ff;
+    --dark-cornflower-blue: #023e7dff;
+    --oxford-blue: #002855ff;
+    --oxford-blue-2: #001845ff;
+    --oxford-blue-3: #001233ff;
+    --independence: #33415cff;
+    --black-coral: #5c677dff;
+    --roman-silver: #7d8597ff;
+    --manatee: #979dacff;
+
+
+    --title-color: var(--oxford-blue-3);
+    --button-color: var(--oxford-blue);
+    --background-color: var(--light-blue);
+
+    --config-hover: var(--black-coral);
+    --config-color: var(--independence);
+    --grid-color: var(--manatee);
 }
 
+/* /-----\/-----\ HEADER /-----\/-----\ */
+
 body{
-    background-color: var(--grey);
+    background-color: var(--background-color);
     margin: 10px;
     height: calc(100vh - 20px);
 }
@@ -20,24 +48,27 @@ header{
 .Logo{
     height: 100px;
     aspect-ratio: 1;
-    background-color: var(--purple);
+    background-color: var(--button-color);
     border-radius: 25%;
+    opacity: 0;
 }
 
 header h1{
-    color: var(--darkblue);
+    color: var(--title-color);
 }
 
 .bouton-resoudre{
     padding: 10px;
-    background-color: var(--purple);
-    border-radius: 25%;
+    background-color: var(--button-color);
+    border-radius: 15px;
 }
 
 .bouton-resoudre h3{
     margin: 0px;
     color: white;
 }
+
+/* /-----\/-----\ GRILLE /-----\/-----\ */
 
 .grille{
     height: 80%;
@@ -47,46 +78,75 @@ header h1{
     grid-template-rows: 100px 250px 70px;
 }
 
+/* ----- Config Area ----- */
+
 .config_verticale div,.config_horizontale div,.cases div{
-    border: 1px solid var(--darkblue);
+    border: 1px solid var(--title-color);
+}
+
+.config_verticale div,.config_horizontale div{
+    display: flex;
+    justify-content: center;
+    background-color: var(--config-color);
+}
+
+.config_verticale div:hover,.config_horizontale div:hover{
+    background-color: var(--config-hover);
 }
 
 .config_verticale{
     grid-column: 2;
     grid-row: 1;
-    background-color: green;
     display: grid;
     grid-template-columns: repeat(5,minmax(20px,1fr));
 }
+
+.config_horizontale{
+    grid-column: 1;
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: repeat(5,minmax(20px,1fr));
+}
+
+.config_verticale div{
+    flex-direction: row;
+    justify-content: center;
+}
+
+.config_horizontale div{
+    flex-direction: column;
+}
+
+/* ----- Input ----- */
+
+.config-input{
+    background-color: var(--config-color);
+    border-color: var(--config-color);
+    border-style: solid;
+    color: white;
+    width: 15px;
+    height: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.config_verticale div:hover .config-input,.config_horizontale div:hover .config-input,.config-input:focus{
+    background-color: white;
+    border-color: rgb(118,118,118);
+    border-style: inset;
+    color:black
+}
+
+/* ----- Plus Part ----- */
 
 .plus-vertical{
     grid-column: 3;
     grid-row: 1;
 }
 
-.config_horizontale{
-    grid-column: 1;
-    grid-row: 2;
-    background-color: red;
-    display: grid;
-    grid-template-rows: repeat(5,minmax(20px,1fr));
-}
-
 .plus-horizontal{
     grid-column: 1;
     grid-row: 3;
-}
-
-.cases{
-    grid-column: 2;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: repeat(5,minmax(20px,1fr));
-    grid-template-rows: repeat(5,minmax(20px,1fr));
-}
-
-.cases div{
-    background-color: yellow;
 }
 
 .bouton-plus{
@@ -98,7 +158,7 @@ header h1{
 .bouton-plus div{
     height: 40px;
     aspect-ratio: 1;
-    background-color: var(--purple);
+    background-color: var(--button-color);
     color: white;
     font-size: 30px;
     font-weight: bold;
@@ -110,3 +170,18 @@ header h1{
     border-radius: 30%;
     user-select: none;
 }
+
+/* ----- Case Part ----- */
+
+.cases{
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(5,minmax(20px,1fr));
+    grid-template-rows: repeat(5,minmax(20px,1fr));
+}
+
+.cases div{
+    background-color: var(--grid-color);
+}
+

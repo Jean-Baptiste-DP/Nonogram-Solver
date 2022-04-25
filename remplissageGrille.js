@@ -10,6 +10,8 @@ function addRow(){
     //add a column in the config part
     document.getElementById("config_horizontale").style["grid-template-rows"]="repeat("+height+",minmax(20px,1fr))"
     var nvelleDiv = document.createElement("div")
+    var input = document.createElement("input")
+    nvelleDiv.appendChild(input)
     document.getElementById("config_horizontale").appendChild(nvelleDiv)
 
     //add elements to cases
@@ -29,6 +31,10 @@ function addColumn(){
     //add a row in the config part
     document.getElementById("config_verticale").style["grid-template-columns"]="repeat("+width+",minmax(20px,1fr))"
     var nvelleDiv = document.createElement("div")
+    var input = document.createElement("input")
+    input.id="config-input"
+    input.classList.add("config-input")
+    nvelleDiv.appendChild(input)
     document.getElementById("config_verticale").appendChild(nvelleDiv)
 
     //add elements to cases

@@ -120,3 +120,5 @@ for(let i=1;i<6;i++){
 }
 
 console.log("page chargée")
+
+//document.getElementById("grille").style.setProperty('--square-side', '50px')

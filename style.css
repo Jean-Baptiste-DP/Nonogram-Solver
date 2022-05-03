@@ -86,7 +86,6 @@ header h1{
 
 .config_verticale div,.config_horizontale div{
     display: flex;
-    justify-content: center;
     background-color: var(--config-color);
 }
 
@@ -109,12 +108,13 @@ header h1{
 }
 
 .config_verticale div{
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .config_horizontale div{
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* ----- Input ----- */
@@ -124,7 +124,7 @@ header h1{
     border-color: var(--config-color);
     border-style: solid;
     color: white;
-    width: 15px;
+    width: 20px;
     height: 20px;
     font-size: 18px;
     text-align: center;
@@ -135,6 +135,18 @@ header h1{
     border-color: rgb(118,118,118);
     border-style: inset;
     color:black
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* ----- Plus Part ----- */

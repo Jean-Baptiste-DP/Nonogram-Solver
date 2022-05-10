@@ -107,8 +107,8 @@ function addColumn(){
     listNbInput["vert"].push(1)
 }
 
-document.getElementById("plus-horizontal").addEventListener("click",()=>{addRow()})
-document.getElementById("plus-vertical").addEventListener("click",()=>{addColumn()})
+document.getElementById("add-row").addEventListener("click",()=>{addRow()})
+document.getElementById("add-column").addEventListener("click",()=>{addColumn()})
 
 for(let i=1;i<6;i++){
     let elehor=document.getElementById("config-input-hori-"+i+"-1")

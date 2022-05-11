@@ -37,6 +37,10 @@ function modificationInput(orientation,nLigne,nInput){
 function addRow(){
     height+=1
 
+    // disparition of the row to add more row
+    document.getElementById("add-row").style="opacity:0"
+    document.getElementById("add-row").style.display="none"
+
     //grow the grid
     //document.getElementById("grille").style["grid-template-rows"]= "100px "+(height*50)+"px 70px"
     document.getElementById("grille").style.setProperty('--height', height)
@@ -71,10 +75,24 @@ function addRow(){
 
     //one more case in add column
     document.getElementById("add-column").appendChild(document.createElement("div"))
+
+    //apparition of the row to add more row
+    setTimeout(function(){
+        document.getElementById("add-row").style.display="grid"
+    }, 1);
+
+    setTimeout(function(){
+        document.getElementById("add-row").style=""
+    },20);
 }
 
 function addColumn(){
     width+=1
+
+    // disparition of the column to add more column
+    document.getElementById("add-column").style="opacity:0"
+    document.getElementById("add-column").style.display="none"
+
 
     //grow the grid
     //document.getElementById("grille").style["grid-template-columns"]= "100px "+(width*50)+"px 70px"
@@ -111,6 +129,16 @@ function addColumn(){
 
     //one more case in add row
     document.getElementById("add-row").appendChild(document.createElement("div"))
+
+
+    //apparition of the column to add more column
+    setTimeout(function(){
+        document.getElementById("add-column").style.display="grid"
+    }, 1);
+
+    setTimeout(function(){
+        document.getElementById("add-column").style=""
+    },20);
 }
 
 document.getElementById("add-row").addEventListener("click",()=>{addRow()})

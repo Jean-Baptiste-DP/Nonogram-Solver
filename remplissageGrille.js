@@ -68,6 +68,9 @@ function addRow(){
 
     //dynamic control
     listNbInput["hori"].push(1)
+
+    //one more case in add column
+    document.getElementById("add-column").appendChild(document.createElement("div"))
 }
 
 function addColumn(){
@@ -105,6 +108,9 @@ function addColumn(){
     
     //dynamic control
     listNbInput["vert"].push(1)
+
+    //one more case in add row
+    document.getElementById("add-row").appendChild(document.createElement("div"))
 }
 
 document.getElementById("add-row").addEventListener("click",()=>{addRow()})

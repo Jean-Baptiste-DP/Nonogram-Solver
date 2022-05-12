@@ -178,9 +178,6 @@ input[type=number] {
     transition: opacity 1s;
 }
 
-.add-line[invisible="1"],.add-line[invisible="1"]:hover{
-    opacity:0;
-}
 
 .add-line:hover{
     opacity: 1;

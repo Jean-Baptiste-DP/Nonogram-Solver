@@ -14,12 +14,18 @@ function resolution(){
         if(poids>mon_plateau.largeur){
             mon_tas.ajout({poids,position:i,horizontal:true})
             mon_plateau.rangee_en_traitement(i,true,true)
+        }else if(poids==0){
+            mon_tas.ajout({poids:2*mon_plateau.largeur,position:i,horizontal:true})
+            mon_plateau.rangee_en_traitement(i,true,true)
         }
     }
     for(let i=0 ; i<mon_plateau.largeur ; i++){
         let poids=mon_plateau.configuration_rangee(i,false).poids
         if(poids>mon_plateau.hauteur){
             mon_tas.ajout({poids,position:i,horizontal:false})
+            mon_plateau.rangee_en_traitement(i,false,true)
+        }else if(poids==0){
+            mon_tas.ajout({poids:2*mon_plateau.hauteur,position:i,horizontal:false})
             mon_plateau.rangee_en_traitement(i,false,true)
         }
     }

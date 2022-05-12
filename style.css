@@ -84,20 +84,24 @@ header h1{
     display: grid;
     grid-template-columns: var(--config-length) calc(var(--width) * var(--square-side)) var(--square-side);
     grid-template-rows: var(--config-length) calc(var(--height) * var(--square-side)) var(--square-side);
+    position: relative;
+    left: 1cm;
 }
 
 /* ----- Config Area ----- */
 
-.config_verticale div,.config_horizontale div,.cases div, .add-line div{
+.config_verticale>div,.config_horizontale>div,.cases>div, .add-line>div{
     border: 1px solid var(--title-color);
 }
 
-.config_verticale div,.config_horizontale div, .add-line .add-config{
+.config_verticale>div,.config_horizontale>div, .add-line>.add-config{
     display: flex;
     background-color: var(--config-color);
+    position: relative;
+    z-index: 1000;
 }
 
-.config_verticale div:hover,.config_horizontale div:hover,.add-line .add-config:hover{
+.config_verticale>div:hover,.config_horizontale>div:hover,.add-line>.add-config:hover{
     background-color: var(--config-hover);
 }
 
@@ -115,12 +119,12 @@ header h1{
     grid-template-rows: repeat(var(--height),var(--square-side));
 }
 
-.config_verticale div,.add-column .add-config{
+.config_verticale>div,.add-column>.add-config{
     flex-direction: column;
     align-items: center;
 }
 
-.config_horizontale div,.add-row .add-config{
+.config_horizontale>div,.add-row>.add-config{
     flex-direction: row;
     align-items: center;
 }
@@ -182,37 +186,49 @@ input[type=number] {
 .add-line:hover{
     opacity: 1;
 }
-/* .plus-vertical{
-    grid-column: 3;
-    grid-row: 1;
+
+/* ----- Cross Part ----- */
+
+.cross{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    transition: 
+        top 1s 1s,
+        left 1s 1s,
+        opacity 1s 1s
+    ;
 }
 
-.plus-horizontal{
-    grid-column: 1;
-    grid-row: 3;
+.config_verticale div .cross{
+    top: 0cm;
 }
 
-.bouton-plus{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.config_verticale div:hover .cross,.config_verticale div .cross:hover{
+    top: -25px;
+    opacity: 1;
+    transition: 
+        top 1s,
+        opacity 1s
+    ;
 }
 
-.bouton-plus div{
-    height: 40px;
-    aspect-ratio: 1;
-    background-color: var(--button-color);
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-width: 0px;
-    border-radius: 30%;
-    user-select: none;
-} */
+.config_horizontale div .cross{
+    left: 0cm;
+}
+
+.config_horizontale div:hover .cross,.config_horizontale div:hover .cross:hover{
+    left: -25px;
+    opacity: 1;
+    transition:
+        left 1s,
+        opacity 1s
+    ;
+}
 
 /* ----- Case Part ----- */
 

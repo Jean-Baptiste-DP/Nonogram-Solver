@@ -36,6 +36,8 @@ body{
     background-color: var(--background-color);
     margin: 10px;
     height: calc(100vh - 20px);
+    position: relative;
+    z-index: -2;
 }
 
 header{
@@ -85,7 +87,8 @@ header h1{
     grid-template-columns: var(--config-length) calc(var(--width) * var(--square-side)) var(--square-side);
     grid-template-rows: var(--config-length) calc(var(--height) * var(--square-side)) var(--square-side);
     position: relative;
-    left: 1cm;
+    left: 1cm; /* a changer juste temporaire */
+    top: 30px; /* permettre le hover des croix */
 }
 
 /* ----- Config Area ----- */
@@ -98,7 +101,6 @@ header h1{
     display: flex;
     background-color: var(--config-color);
     position: relative;
-    z-index: 1000;
 }
 
 .config_verticale>div:hover,.config_horizontale>div:hover,.add-line>.add-config:hover{
@@ -195,13 +197,17 @@ input[type=number] {
     border-radius: 50%;
     background-color: red;
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     opacity: 0;
     transition: 
         top 1s 1s,
         left 1s 1s,
         opacity 1s 1s
     ;
+}
+
+.cross:hover{
+    background-color: rgb(255, 255, 0);
 }
 
 .config_verticale div .cross{
@@ -243,4 +249,3 @@ input[type=number] {
 .cases div,.add-config ~ div{
     background-color: var(--grid-color);
 }
-

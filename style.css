@@ -76,16 +76,16 @@ header h1{
     --square-side: 50px;
     --config-length: 100px;
 
-    --height: 5;
-    --width: 5;
+    --hori: 5;
+    --vert: 5;
 }
 
 .grille{
     height: 80%;
     aspect-ratio: 1;
     display: grid;
-    grid-template-columns: var(--config-length) calc(var(--width) * var(--square-side)) var(--square-side);
-    grid-template-rows: var(--config-length) calc(var(--height) * var(--square-side)) var(--square-side);
+    grid-template-columns: var(--config-length) calc(var(--vert) * var(--square-side)) var(--square-side);
+    grid-template-rows: var(--config-length) calc(var(--hori) * var(--square-side)) var(--square-side);
     position: relative;
     left: 1cm; /* a changer juste temporaire */
     top: 30px; /* permettre le hover des croix */
@@ -111,22 +111,22 @@ header h1{
     grid-column: 2;
     grid-row: 1;
     display: grid;
-    grid-template-columns: repeat(var(--width),var(--square-side));
+    grid-template-columns: repeat(var(--vert),var(--square-side));
 }
 
 .config_horizontale{
     grid-column: 1;
     grid-row: 2;
     display: grid;
-    grid-template-rows: repeat(var(--height),var(--square-side));
+    grid-template-rows: repeat(var(--hori),var(--square-side));
 }
 
-.config_verticale>div,.add-column>.add-config{
+.config_verticale>div,.add-vert>.add-config{
     flex-direction: column;
     align-items: center;
 }
 
-.config_horizontale>div,.add-row>.add-config{
+.config_horizontale>div,.add-hori>.add-config{
     flex-direction: row;
     align-items: center;
 }
@@ -165,18 +165,18 @@ input[type=number] {
 
 /* ----- Plus Part ----- */
 
-.add-column{
+.add-vert{
     grid-column: 3;
     grid-row: 1/3;
     display: grid;
-    grid-template-rows: var(--config-length) repeat(var(--height),var(--square-side));
+    grid-template-rows: var(--config-length) repeat(var(--hori),var(--square-side));
 }
 
-.add-row{
+.add-hori{
     grid-column: 1/3;
     grid-row: 3;
     display: grid;
-    grid-template-columns: var(--config-length) repeat(var(--width),var(--square-side));
+    grid-template-columns: var(--config-length) repeat(var(--vert),var(--square-side));
 }
 
 .add-line{
@@ -242,8 +242,8 @@ input[type=number] {
     grid-column: 2;
     grid-row: 2;
     display: grid;
-    grid-template-columns: repeat(var(--width),var(--square-side));
-    grid-template-rows: repeat(var(--height),var(--square-side));
+    grid-template-columns: repeat(var(--vert),var(--square-side));
+    grid-template-rows: repeat(var(--hori),var(--square-side));
 }
 
 .cases div,.add-config ~ div{

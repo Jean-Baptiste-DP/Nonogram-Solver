@@ -81,10 +81,12 @@ function addLine(orientation){// hori or vert
     input.classList.add("config-input")
 
     // add cross to div
-    var crossdiv=document.createElement("div")
+    let crossdiv=document.createElement("div")
     crossdiv.id="cross-"+orientation+"-"+gridData.numberList[orientation]
     crossdiv.classList.add("cross")
     crossdiv.classList.add("cross-"+orientation)
+    let i=gridData.numberList[orientation]
+    crossdiv.addEventListener("click",()=>{deleteLine(orientation,i)})
     // need function of deleting line
 
     nvelleDiv.appendChild(input)
@@ -111,6 +113,29 @@ function addLine(orientation){// hori or vert
     },20);
 }
 
+
+function deleteLine(orientation,number){
+    gridData.deletedLine[orientation][number-1]=true
+    gridData.gridDim[orientation]-=1
+    
+    let invOrient="hori"
+    if(orientation==="hori"){invOrient="vert"}
+
+    let config_to_delete= document.getElementById(orientation+"-"+number)
+
+    //delete cases
+    for(let i=0;i<gridData.gridDim[invOrient];i++){
+        document.querySelector(".cases > div:last-of-type").remove()
+    }
+
+    //delete case in add line
+    document.querySelector(".add-" + invOrient + " > div:last-of-type").remove()
+
+    config_to_delete.remove()
+
+    document.getElementById("grille").style.setProperty("--"+orientation, gridData.gridDim[orientation])
+}
+
 document.getElementById("add-hori").addEventListener("click",()=>{addLine("hori")})
 document.getElementById("add-vert").addEventListener("click",()=>{addLine("vert")})
 
@@ -123,6 +148,8 @@ for(let i=1;i<6;i++){
     elever.addEventListener('keyup', function(){
         modificationInput("vert",i,1)
     });
+    document.getElementById("cross-hori-"+i).addEventListener("click",()=>{deleteLine("hori",i)})
+    document.getElementById("cross-vert-"+i).addEventListener("click",()=>{deleteLine("vert",i)})
 }
 
 console.log("page chargée")

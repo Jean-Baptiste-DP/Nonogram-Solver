@@ -1,9 +1,10 @@
-function resolution(){
+function resolution(vert_list,hori_list){
     let date1= Date.now()
     // --- Initialisation des objets ---
 
     // let mon_plateau = new plateau([[4],[1,1],[1,1],[5],[3]],[[3],[1,2],[5],[1,2],[1,1]])
-    let mon_plateau = new plateau([[7],[2,3],[7,1],[9],[9],[1,3],[1,3],[2,3],[1,3],[9]],[[1,1],[10],[1,3,1],[1,3,1],[1,3,1],[1,3,1],[1,3,1],[10],[1,7],[9]])
+    //let mon_plateau = new plateau([[7],[2,3],[7,1],[9],[9],[1,3],[1,3],[2,3],[1,3],[9]],[[1,1],[10],[1,3,1],[1,3,1],[1,3,1],[1,3,1],[1,3,1],[10],[1,7],[9]])
+    let mon_plateau = new plateau(vert_list,hori_list)
     let mon_tas = new TasMax(20)
     let mon_solveur= new solveurLigne(5,5)
 
@@ -63,6 +64,5 @@ function resolution(){
     console.log("Temps de resolution : "+(date2-date1)+" ms")
 }
 
-document.getElementById("bouton").addEventListener("click",resolution)
 
 //voir style https://orb-h.github.io/nonogram-solver/

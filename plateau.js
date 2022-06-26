@@ -1,5 +1,7 @@
 class plateau{
     constructor(lignes,colonnes){
+        console.log("lignes : ",lignes)
+        console.log("colonnes : ",colonnes)
         this.hauteur=lignes.length
         this.largeur=colonnes.length
         this.lignes = Array(this.hauteur)

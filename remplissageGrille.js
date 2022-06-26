@@ -136,6 +136,37 @@ function deleteLine(orientation,number){
     document.getElementById("grille").style.setProperty("--"+orientation, gridData.gridDim[orientation])
 }
 
+function captureSide(orientation){
+    let size=gridData.numberList[orientation]
+    let list=[]
+    for(let i=1;i<size+1;i++){
+        if(!gridData.deletedLine[orientation][i]){
+            let number_of_entry=gridData.listNbInput[orientation][i-1]
+            let lineList=[]
+            for (let j=1;j<number_of_entry+1;j++){
+                console.log("config-input-"+orientation+"-"+i+"-"+j)
+                let value=document.getElementById("config-input-"+orientation+"-"+i+"-"+j).value
+                if(value!='' && value!='0'){
+                    lineList.push(Math.abs(parseInt(value)))
+                }
+            }
+            if(lineList.length===0){
+                lineList.push(0)
+            }
+            list.push(lineList)
+        }
+    }
+    return list
+}
+
+function captureGrid(){
+    let vert_list=captureSide("vert")
+    let hori_list=captureSide("hori")
+    resolution(vert_list,hori_list)
+}
+
+document.getElementById("bouton").addEventListener("click",()=>{captureGrid()})
+
 document.getElementById("add-hori").addEventListener("click",()=>{addLine("hori")})
 document.getElementById("add-vert").addEventListener("click",()=>{addLine("vert")})
 

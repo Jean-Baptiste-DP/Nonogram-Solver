@@ -162,7 +162,7 @@ function captureSide(orientation){
 function captureGrid(){
     let vert_list=captureSide("vert")
     let hori_list=captureSide("hori")
-    resolution(vert_list,hori_list)
+    resolution(hori_list,vert_list)
 }
 
 document.getElementById("bouton").addEventListener("click",()=>{captureGrid()})

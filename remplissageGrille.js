@@ -14,7 +14,8 @@ let gridData={
     deletedLine:{
         hori:[false,false,false,false,false],
         vert:[false,false,false,false,false]
-    }
+    },
+    numberCases:25
 }
 
 function modificationInput(orientation,nLigne,nInput){
@@ -97,6 +98,8 @@ function addLine(orientation){// hori or vert
     //document.getElementById("cases").style["grid-template-rows"]="repeat("+height+",minmax(20px,1fr))"
     for(let i=0;i<gridData.gridDim[invOrient];i++){
         var nvelleDiv = document.createElement("div")
+        nvelleDiv.id="case-"+gridData.numberCases
+        gridData.numberCases+=1
         document.getElementById("cases").appendChild(nvelleDiv)
     }
 
@@ -125,7 +128,8 @@ function deleteLine(orientation,number){
 
     //delete cases
     for(let i=0;i<gridData.gridDim[invOrient];i++){
-        document.querySelector(".cases > div:last-of-type").remove()
+        gridData.numberCases-=1
+        document.getElementById("case-"+gridData.numberCases).remove()
     }
 
     //delete case in add line
@@ -140,7 +144,7 @@ function captureSide(orientation){
     let size=gridData.numberList[orientation]
     let list=[]
     for(let i=1;i<size+1;i++){
-        if(!gridData.deletedLine[orientation][i]){
+        if(!gridData.deletedLine[orientation][i-1]){
             let number_of_entry=gridData.listNbInput[orientation][i-1]
             let lineList=[]
             for (let j=1;j<number_of_entry+1;j++){
@@ -159,10 +163,24 @@ function captureSide(orientation){
     return list
 }
 
-function captureGrid(){
+async function captureGrid(){
     let vert_list=captureSide("vert")
     let hori_list=captureSide("hori")
-    resolution(hori_list,vert_list)
+    grid=await resolution(hori_list,vert_list)
+    console.log(grid)
+    console.log(grid.length)
+    console.log(grid[0].length)
+    for(let i=0;i<grid.length;i++){
+        for(let j=0;j<grid[i].length;j++){
+            let cases=document.getElementById("case-"+(i*grid[i].length+j))
+            console.log("i : ",i,", j : ",j)
+            if(grid[i][j]===1){
+                cases.classList.add("case-cross")
+            }else if(grid[i][j]===2){
+                cases.classList.add("case-full")
+            }
+        }
+    }
 }
 
 document.getElementById("bouton").addEventListener("click",()=>{captureGrid()})

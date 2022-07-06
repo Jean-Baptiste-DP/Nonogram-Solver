@@ -62,6 +62,7 @@ function resolution(vert_list,hori_list){
     let date2 = Date.now()
     mon_plateau.afficher()
     console.log("Temps de resolution : "+(date2-date1)+" ms")
+    return mon_plateau.grid
 }
 
 

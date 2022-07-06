@@ -248,4 +248,33 @@ input[type=number] {
 
 .cases div,.add-config ~ div{
     background-color: var(--grid-color);
+    position: relative;
+}
+
+.cases .case-full{
+    background-color: var(--button-color);
+}
+
+.cases .case-cross:before, .cases .case-cross:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    background: var(--button-color);
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); /* IE 9 */
+    -webkit-transform:rotate(45deg); /* Safari and Chrome */
+}
+  
+.cases .case-cross:before {
+    left: 50%;
+    width: 10%;
+    margin-left: -5%;
+    height: 100%;
+}
+  
+.cases .case-cross:after {
+    top: 50%;
+    height: 10%;
+    margin-top: -5%;
+    width: 100%;
 }
